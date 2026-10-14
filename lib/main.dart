@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'registrar_glucosa_screen.dart'; // Importa la pantalla creada anteriormente
+import 'screens/registrar_glucosa_screen.dart';
+import 'screens/glucosa_registrada_screen.dart';
 
 void main() {
   runApp(const VidaEnBalanceApp());
@@ -14,16 +15,20 @@ class VidaEnBalanceApp extends StatelessWidget {
       title: 'Vida en Balance',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Roboto', // Puedes cambiar la fuente si usas una personalizada
+        fontFamily: 'Roboto',
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6B8E55), // Verde principal del diseño
-          primary: const Color(0xFF6B8E55),
-          surface: const Color(0xFFFAF8F5),
-        ),
         scaffoldBackgroundColor: const Color(0xFFFAF8F5),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6B8E55),
+          primary: const Color(0xFF6B8E55),
+        ),
       ),
-      home: const RegistrarGlucosaScreen(),
+      // Definición del sistema de rutas nombrado para la navegación
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const RegistrarGlucosaScreen(),
+        '/glucosa-registrada': (context) => const GlucosaRegistradaScreen(),
+      },
     );
   }
 }
